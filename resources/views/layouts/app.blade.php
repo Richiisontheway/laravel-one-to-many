@@ -20,14 +20,14 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                            </li> --}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.projects.index')}}">vai a project </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.projects.index')}}">vai a </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link 3</a>
+                                <a class="nav-link" href="{{route('admin.types.index')}}">vai ai types </a>
                             </li>
                         </ul>
                         <form method="POST" action="{{ route('logout') }}">

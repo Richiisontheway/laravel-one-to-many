@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+//model
 use App\Models\Project;
-use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-
+//helper
 use Illuminate\Support\Str;
-
+//Form request
+use Illuminate\Http\Request;
 use App\Http\Requests\FormRequest\StoreProjectRequest;
 use App\Http\Requests\FormRequest\UpdateProjectRequest;
 class ProjectController extends Controller

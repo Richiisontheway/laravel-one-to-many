@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Project')
+@section('page-title', 'Type')
 
 @section('main-content')
     <div class="row">
@@ -8,14 +8,14 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center text-success">
-                        Tutti i Project
+                        Tutti i type
                     </h1>
                     <br>
                 </div>
                 
                     <table class="table">
                         <div class="mb-4">
-                            <a href="{{ route('admin.projects.create') }}" class="btn btn-success w-100 fs-5">
+                            <a href="{{ route('admin.types.create') }}" class="btn btn-success w-100 fs-5">
                                 + Aggiungi
                             </a>
                         </div>
@@ -28,16 +28,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($project as $singleAttribute)
+                            @foreach ($types as $item)
                                 <tr>
-                                    <th scope="row">{{$singleAttribute->id}}</th>
-                                    <td>{{$singleAttribute->title}}</td>
-                                    <td>{{$singleAttribute->date}}</td>
+                                    <th scope="row">{{$item->id}}</th>
+                                    <td>{{$item->title}}</td>
+                                    <td>{{$item->date}}</td>
                                     <td>
-                                        <a href="{{ route('admin.projects.show' , ['project' => $singleAttribute->slug]) }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.types.show' , ['type' => $item->slug]) }}" class="btn btn-primary">
                                             Show
                                         </a>
-                                        <a href="{{route('admin.projects.edit' , ['project' => $singleAttribute->id])}}" class="btn btn-warning">
+                                        <a href="{{route('admin.types.edit' , ['type' => $item->id])}}" class="btn btn-warning">
                                             Edit
                                         </a>
                                         <a href="" class="btn btn-danger">
