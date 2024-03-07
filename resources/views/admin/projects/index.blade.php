@@ -23,6 +23,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Titolo</th>
+                                <th scope="col">Tipo</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Azioni</th>
                             </tr>
@@ -32,6 +33,15 @@
                                 <tr>
                                     <th scope="row">{{$singleAttribute->id}}</th>
                                     <td>{{$singleAttribute->title}}</td>
+                                    <td>
+                                        {{-- pre farlo diventare un link la rotta show ha bisogno di un dato
+                                            id per funzionare e lo prendiamo fando $var->type(che ci prende la funzione dentro il model Project)
+                                            ->per l'id
+                                         --}}
+                                        <a href="{{route('admin.types.show', ['type' => $singleAttribute->type->id]) }}">
+                                            {{$singleAttribute->type->title}}
+                                        </a>
+                                    </td>
                                     <td>{{$singleAttribute->date}}</td>
                                     <td>
                                         <a href="{{ route('admin.projects.show' , ['project' => $singleAttribute->slug]) }}" class="btn btn-primary">
