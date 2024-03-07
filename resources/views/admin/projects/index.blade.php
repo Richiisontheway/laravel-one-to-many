@@ -47,7 +47,7 @@
                                         <a href="{{ route('admin.projects.show' , ['project' => $singleAttribute->slug]) }}" class="btn btn-primary">
                                             Show
                                         </a>
-                                        <a href="{{route('admin.projects.edit' , ['project' => $singleAttribute->id])}}" class="btn btn-warning">
+                                        <a href="{{route('admin.projects.edit' , ['project' => $singleAttribute->slug])}}" class="btn btn-warning">
                                             Edit
                                         </a>
                                         <a href="" class="btn btn-danger">

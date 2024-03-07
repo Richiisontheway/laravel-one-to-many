@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 //model
 use App\Models\Project;
+use App\Models\Type;
 
 use App\Http\Controllers\Controller;
 //helper
@@ -60,19 +61,27 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(string $slug)
     {
+        $types = Type::all();
+        $project = Project::where('slug', $slug)->firstOrFail();
         return view('admin.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(UpdateProjectRequest $request, string $slug)
     {
-        $validatedData = $request->validated();
-        $project->update($validatedData);
-        return redirect()->route('admin.projects.index', ['project' => $project->id]);
+        $validationData=$request->validated();
+
+        $project = Project::where('slug', $slug)->firstOrFail();
+        $slug = Str::slug($validationData['title']);
+        $validationData['slug'] = $slug;
+        
+        
+        $project->updateOrFail($validationData);
+        return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
     /**
