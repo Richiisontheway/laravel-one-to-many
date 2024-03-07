@@ -12,7 +12,6 @@ class Project extends Model
         '_token',
         'id',
         'slug',
-        'type_id'
     ];
 
     /*

@@ -28,7 +28,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -44,6 +45,7 @@ class ProjectController extends Controller
         $project->image = $validatedData['image'];
         $project->date = $validatedData['date'];
         $project->slug = $validatedData['title'];
+        $project->type_id = $validatedData["type_id"];
         $project->save();
 
          return redirect()->route('admin.projects.show', ['project' => $project->slug]);

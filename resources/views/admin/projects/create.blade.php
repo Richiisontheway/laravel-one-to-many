@@ -27,15 +27,27 @@
                     @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Titolo <span class=" text-danger ">*</span></label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci il titolo" maxlength="64" required>
+                            <input type="text" value="{{old('title')}}"   class="form-control" id="title" name="title" placeholder="Inserisci il titolo" maxlength="64" required>
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">SRC</label>
-                            <input type="text" class="form-control" id="image" name="image" placeholder="Inserisci il titolo" maxlength="1024">
+                            <input value="{{old('image')}}" type="text" class="form-control" id="image" name="image" placeholder="Inserisci il titolo" maxlength="1024">
+                        </div>
+                        <div class="mb-3">
+                            <label for="type_id" class="form-label">Tipo <span class=" text-danger ">*</span></label>
+                            <select class="form-control" name="type_id" id="type_id" value="{{old('type')}}" required>
+                                <option value="" disabled selected>scegli il tipo di progetto..</option>
+                                {{-- la variabile $types me la sono passata dal controller --}}
+                                @foreach ($types as $type)
+                                    <option value="{{$type->id}}">
+                                        {{$type->title}}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Descrizione <span class=" text-danger ">*</span></label>
-                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci la descrizione..." required maxlength="4064"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Inserisci la descrizione..." required maxlength="4064">{{old('description')}} </textarea>
                         </div>
                         <div class="mb-3">
                             <label for="date" class="form-label">Data</label>
