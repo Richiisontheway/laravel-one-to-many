@@ -11,5 +11,15 @@ class Type extends Model
     protected $fillable =[
         'title',
         'slug'
-    ];
+    ]; 
+
+    /*
+        relationship
+    */
+
+    //uso il nome al plurale per sottolineare che è una relazione one to many
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
+
 }

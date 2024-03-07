@@ -14,4 +14,13 @@ class Project extends Model
         'slug',
         'type_id'
     ];
+
+    /*
+        relationship
+    */
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }
