@@ -11,6 +11,7 @@ class Project extends Model
     protected $guarded = [
         '_token',
         'id',
-        'slug'
+        'slug',
+        'type_id'
     ];
 }
