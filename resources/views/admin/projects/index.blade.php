@@ -50,9 +50,17 @@
                                         <a href="{{route('admin.projects.edit' , ['project' => $singleAttribute->slug])}}" class="btn btn-warning">
                                             Edit
                                         </a>
-                                        <a href="" class="btn btn-danger">
-                                            Delete
-                                        </a>
+                                        <form
+                                            onsubmit="return confirm('Sei sicuro di voler eliminare questo progetto?');"
+                                            class="d-inline-block"
+                                            action="{{ route('admin.projects.destroy', ['project' => $singleAttribute->id]) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">
+                                                Elimina
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
