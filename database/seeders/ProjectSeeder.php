@@ -6,9 +6,11 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 //models
 use App\Models\Project;
+use App\Models\Type;
 
 //helpers
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
 
 class ProjectSeeder extends Seeder
 {
@@ -18,7 +20,9 @@ class ProjectSeeder extends Seeder
     public function run(): void
     {
         //per svuotare il tutto nel caso ci fossero dei dati
-        Project::truncate();
+        Schema::withoutForeignKeyConstraints(function () {
+            Project::truncate();
+        });
         //per ciclare gli elementi
         for ($i=0; $i < 10; $i++) { 
             $project = new Project();
@@ -28,6 +32,7 @@ class ProjectSeeder extends Seeder
             $slug = Str::slug($title);
             $project->slug = $slug;
             $project->image = fake()->imageUrl(200,200,'dog',true);
+            $project->type_id = Type::inRandomOrder()->first()->id;
             $project->description = fake()->paragraph();
             $project->date = fake()->dateTimeThisCentury();
             $project->save();
